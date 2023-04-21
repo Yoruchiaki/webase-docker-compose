@@ -1,0 +1,110 @@
+version: '3'
+services:
+  sign:
+    restart: always
+    container_name: webase-sign
+    build:
+      context: ./docker/WeBASE-Sign
+      dockerfile: Dockerfile
+    image: sign
+    environment:
+      TZ: Asia/Shanghai
+      DB_HOST: mysql
+      DB_DATABASE: sign
+      DB_PORT: 3306
+      DB_USERNAME: sign
+      DB_PASSWORD: sign
+    links:
+      - mysql
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - './storage/logs:/dist/log/'
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "5004:5004"
+  mysql:
+    restart: always
+    image: 'biarms/mysql:5.7'
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: sign
+      MYSQL_USER: sign
+      MYSQL_PASSWORD: sign
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    healthcheck:
+      test: ["CMD", "mysql", "-uroot", "-p123456", "-e", "SELECT 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  node:
+    restart: always
+    container_name: webase-node-mgr
+    build:
+      context: ./docker/WeBASE-Node-Manager
+      dockerfile: Dockerfile
+    image: node-mgr
+    environment:
+      TZ: Asia/Shanghai
+      DB_HOST: node-mysql
+      DB_DATABASE: node
+      DB_PORT: 3306
+      DB_USERNAME: node
+      DB_PASSWORD: node
+      NODE_HOST: 10.0.200.119:5004
+    links:
+      - node-mysql
+    depends_on:
+      node-mysql:
+        condition: service_healthy
+    volumes:
+      - './storage/logs:/dist/log/'
+      - './config/hosts:/etc/ansible/hosts'
+      - './config/ansible.cfg:/etc/ansible/ansible.cfg'
+      - 'nodes-root:/dist/NODES_ROOT'
+      - /etc/localtime:/etc/localtime:ro
+  node-mysql:
+    restart: always
+    image: 'biarms/mysql:5.7'
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: node
+      MYSQL_USER: node
+      MYSQL_PASSWORD: node
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - node-mysql:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+    healthcheck:
+      test: ["CMD", "mysql", "-uroot", "-p123456", "-e", "SELECT 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  web:
+    restart: always
+    container_name: web
+    build:
+      context: ./docker/WeBASE-Web
+      dockerfile: Dockerfile
+    image: web
+    environment:
+      TZ: Asia/Shanghai
+    links:
+      - node
+    ports:
+      - '5000:5000'
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+volumes:
+  mysql:
+    driver: local
+  nodes-root:
+    driver: local
+  node-mysql:
+    driver: local

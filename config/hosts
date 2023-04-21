@@ -1,0 +1,2 @@
+[webase]
+10.0.200.118 ansible_ssh_private_key_file=/root/.ssh/id_rsa  ansible_ssh_user=root  ansible_ssh_port=22
