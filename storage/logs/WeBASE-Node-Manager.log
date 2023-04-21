@@ -5048,3 +5048,22 @@ ERROR:
 2023-04-21 15:03:13.197 [node-mgr-task-13] WARN  PullBlockTransTask() - pullBlock jump over: not found any group
 2023-04-21 15:03:22.533 [node-mgr-task-5] WARN  TransMonitorTask() - blockStat jump over, not found any group
 2023-04-21 15:03:32.533 [node-mgr-task-22] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:03:42.533 [node-mgr-task-26] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:03:43.199 [node-mgr-task-7] WARN  PullBlockTransTask() - pullBlock jump over: not found any group
+2023-04-21 15:03:52.532 [node-mgr-task-2] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:00.001 [node-mgr-task-12] WARN  DeleteInfoTask() - DeleteInfoTask jump over, not found any group
+2023-04-21 15:04:00.001 [node-mgr-task-30] WARN  StatisticsTransdailyTask() - updateTransdailyData jump over: no group information exists
+2023-04-21 15:04:02.532 [node-mgr-task-16] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:12.528 [node-mgr-task-19] WARN  TransMonitorTask() - monitor jump over, not found any group
+2023-04-21 15:04:12.532 [node-mgr-task-9] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:13.177 [node-mgr-task-15] INFO  NodeStatusMonitorTask() - start checkAllNodeStatusForAlert startTime:1682060653177
+2023-04-21 15:04:13.179 [node-mgr-task-15] WARN  NodeStatusMonitorTask() - checkNodeStatusForAlert jump over: not found any group
+2023-04-21 15:04:13.200 [node-mgr-task-6] WARN  PullBlockTransTask() - pullBlock jump over: not found any group
+2023-04-21 15:04:22.533 [node-mgr-task-28] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:32.532 [node-mgr-task-23] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:42.531 [node-mgr-task-14] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:04:43.202 [node-mgr-task-30] WARN  PullBlockTransTask() - pullBlock jump over: not found any group
+2023-04-21 15:04:52.532 [node-mgr-task-3] WARN  TransMonitorTask() - blockStat jump over, not found any group
+2023-04-21 15:05:00.001 [node-mgr-task-9] WARN  DeleteInfoTask() - DeleteInfoTask jump over, not found any group
+2023-04-21 15:05:00.001 [node-mgr-task-24] WARN  StatisticsTransdailyTask() - updateTransdailyData jump over: no group information exists
+2023-04-21 15:05:02.533 [node-mgr-task-15] WARN  TransMonitorTask() - blockStat jump over, not found any group
